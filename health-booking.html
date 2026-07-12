@@ -97,22 +97,103 @@ footer{border-top:1px solid var(--line);padding:32px 0 40px;color:var(--muted)}
 
 <footer><div class="wrap"><strong>木木好藥局</strong><br>台北市大安區樂業街75號1樓｜目前籌備中，正式服務時間以公告為準</div></footer>
 
-<div id="modal" class="modal"><div class="modal-card"><div style="font-size:48px">✅</div><h2>預約草稿已建立</h2><p id="summary"></p><p style="color:#6d7266">此示範頁尚未串接後端，因此資料不會真正送出。</p><button id="close" class="btn">完成</button></div></div>
+<div id="modal" class="modal"><div class="modal-card"><div style="font-size:48px">✅</div><h2>預約申請已送出</h2><p id="summary"></p><p style="color:#6d7266">木木好藥局將於營業時間透過 LINE 或電話與您確認預約。</p><button id="close" class="btn">完成</button></div></div>
 
 <script>
-const date=document.getElementById('date');
-const now=new Date(); date.min=new Date(now-now.getTimezoneOffset()*60000).toISOString().split('T')[0];
-const form=document.getElementById('form'), modal=document.getElementById('modal');
-form.addEventListener('submit',e=>{
- e.preventDefault();
- const selected=[...document.querySelectorAll('input[name="service"]:checked')];
- if(!form.checkValidity()){form.reportValidity();return}
- if(!selected.length){alert('請至少選擇一項健康檢測。');return}
- document.getElementById('summary').textContent=`${form.name.value}，希望預約 ${form.date.value} ${form.time.value}，項目：${selected.map(x=>x.value).join('、')}。`;
- modal.classList.add('show');
+const API_URL = 'https://script.google.com/macros/s/AKfycbw8oMmvp2_EWm5K2JLHqsrbVjyf3odobrlYpq4sgsV18Camv6XSXBdp4zvZ-X6GuEkTfA/exec';
+
+const dateInput = document.getElementById('date');
+const today = new Date();
+dateInput.min = new Date(
+  today.getTime() - today.getTimezoneOffset() * 60000
+).toISOString().split('T')[0];
+
+const form = document.getElementById('form');
+const modal = document.getElementById('modal');
+const summary = document.getElementById('summary');
+const closeButton = document.getElementById('close');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const selectedServices = [
+    ...document.querySelectorAll('input[name="service"]:checked')
+  ];
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  if (selectedServices.length === 0) {
+    alert('請至少選擇一項健康檢測。');
+    return;
+  }
+
+  if (!API_URL.startsWith('https://script.google.com/macros/s/') ||
+      !API_URL.endsWith('/exec')) {
+    alert('請先在 HTML 程式中的 API_URL 貼上 Apps Script /exec 網址。');
+    return;
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = '傳送中…';
+
+  const payload = {
+    name: form.elements.name.value.trim(),
+    phone: form.elements.phone.value.trim(),
+    services: selectedServices.map(item => item.value),
+    date: form.elements.date.value,
+    time: form.elements.time.value,
+    firstVisit: form.elements.first.value,
+    contact: form.elements.contact.value,
+    note: form.elements.note.value.trim(),
+    lineName: '',
+    source: 'LINE 健康檢測預約網站'
+  };
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.message || '預約送出失敗');
+    }
+
+    summary.textContent =
+      `${payload.name}，您的預約申請已送出：` +
+      `${payload.date} ${payload.time}，` +
+      `檢測項目為 ${payload.services.join('、')}。` +
+      `木木好藥局將再與您確認實際時段。`;
+
+    modal.classList.add('show');
+  } catch (error) {
+    console.error(error);
+    alert('目前無法送出預約，請改用 LINE 留言或電話聯絡。');
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = '送出預約';
+  }
 });
-document.getElementById('close').onclick=()=>{modal.classList.remove('show');form.reset()};
-modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show')}
+
+closeButton.addEventListener('click', () => {
+  modal.classList.remove('show');
+  form.reset();
+});
+
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.classList.remove('show');
+  }
+});
 </script>
 </body>
 </html>
