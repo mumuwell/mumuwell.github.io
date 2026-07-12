@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>木木好藥局｜健康檢測預約</title>
+<style>
+:root{--g:#526b2f;--gd:#34451e;--bg:#faf7ef;--card:#fff;--line:#ddd7c9;--muted:#6d7266}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;background:linear-gradient(#fffdf8,#f4efe4);color:#2f3328;line-height:1.65}
+.wrap{width:min(1080px,calc(100% - 30px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(255,253,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e9e3d6}
+nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:900;color:var(--gd);font-size:1.15rem}.brand small{display:block;font-weight:600;color:var(--muted);font-size:.72rem;letter-spacing:.08em}
+.btn{display:inline-block;background:var(--g);color:#fff;padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:800;border:0;cursor:pointer}
+.hero{padding:68px 0 45px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+.badge{display:inline-block;background:#edf2e4;color:var(--gd);padding:7px 11px;border-radius:999px;font-weight:800}
+h1{font-size:clamp(2.25rem,6vw,4.4rem);line-height:1.08;margin:16px 0}.lead{font-size:1.1rem;color:var(--muted)}
+.hero-card{background:linear-gradient(145deg,#faf5e8,#e8efd7);border:1px solid #d8dfc8;border-radius:28px;padding:26px;box-shadow:0 18px 42px rgba(60,76,35,.12)}
+.hero-card h3{font-size:1.8rem;margin:0 0 10px}.hero-card ul{padding-left:20px}.hero-note{background:rgba(255,255,255,.72);padding:14px;border-radius:16px;color:var(--muted)}
+section{padding:58px 0}.head{text-align:center;max-width:720px;margin:0 auto 28px}.head h2{font-size:clamp(1.8rem,4vw,2.8rem);margin:0 0 8px}.head p{color:var(--muted);margin:0}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.service{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 20px rgba(60,76,35,.05)}
+.icon{font-size:1.7rem}.service h3{margin:8px 0 4px}.service p{margin:0;color:var(--muted);font-size:.94rem}
+.book{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}.info{background:linear-gradient(160deg,var(--gd),var(--g));color:#fff;border-radius:26px;padding:26px;position:sticky;top:88px}.info h3{font-size:1.75rem;margin-top:0}.notice{background:rgba(255,255,255,.12);padding:14px;border-radius:14px;font-size:.92rem}
+form{background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:0 15px 36px rgba(60,76,35,.1)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:14px} label{display:block;font-weight:800;margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px 13px;border:1px solid #d5cfc1;border-radius:13px;font:inherit;background:#fff}textarea{min-height:105px;resize:vertical}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);padding:10px;border-radius:12px}.check input{width:auto}
+.submit{width:100%;padding:14px;font-size:1.05rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.step b{color:var(--g)}
+footer{border-top:1px solid var(--line);padding:32px 0 40px;color:var(--muted)}
+.modal{display:none;position:fixed;inset:0;background:rgba(20,25,15,.48);place-items:center;padding:20px;z-index:20}.modal.show{display:grid}.modal-card{background:#fff;border-radius:24px;padding:28px;width:min(500px,100%);text-align:center}
+@media(max-width:850px){.hero-grid,.book{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.info{position:static}}
+@media(max-width:560px){.services,.steps,.grid2,.checks{grid-template-columns:1fr}.hero{padding-top:44px}form{padding:19px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav><div class="brand">🌿 木木好藥局<small>MUMU WELL PHARMACY</small></div><a class="btn" href="#booking">立即預約</a></nav></div></header>
+
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="badge">🩺 木木健康管理站</span><h1>花一點時間，<br>更了解自己的健康。</h1><p class="lead">提供 BMI、血壓、動脈硬化、骨密度、自律神經、血氧、肌膚與頭皮等非侵入式健康檢測，並由藥師協助說明結果。</p><a class="btn" href="#booking">預約健康檢測</a></div>
+<div class="hero-card"><h3>安心、清楚、有溫度</h3><ul><li>非侵入式檢測</li><li>藥師協助說明</li><li>可預約多項檢測</li><li>LINE／電話確認時段</li></ul><div class="hero-note">本服務屬健康管理與衛教用途，不取代醫師診斷。</div></div>
+</div></section>
+
+<section><div class="wrap"><div class="head"><h2>可預約檢測項目</h2><p>實際項目、時間與費用，以正式開幕後公告為準。</p></div>
+<div class="services">
+<div class="service"><div class="icon">⚖️</div><h3>BMI／身體指標</h3><p>身高、體重與 BMI 基礎評估。</p></div>
+<div class="service"><div class="icon">🩺</div><h3>血壓檢測</h3><p>了解收縮壓、舒張壓與脈搏。</p></div>
+<div class="service"><div class="icon">🫀</div><h3>動脈硬化檢測</h3><p>以脈波方式了解血管健康趨勢。</p></div>
+<div class="service"><div class="icon">🦴</div><h3>骨密度檢測</h3><p>掌握骨質健康與追蹤需求。</p></div>
+<div class="service"><div class="icon">🌿</div><h3>自律神經分析</h3><p>了解壓力、疲勞與平衡狀況。</p></div>
+<div class="service"><div class="icon">🫁</div><h3>血氧檢測</h3><p>測量血氧飽和度與脈搏。</p></div>
+<div class="service"><div class="icon">🧴</div><h3>肌膚分析</h3><p>觀察水分、油脂、毛孔與膚況。</p></div>
+<div class="service"><div class="icon">🔬</div><h3>頭皮分析</h3><p>觀察頭皮、毛囊與落髮相關狀況。</p></div>
+</div></div></section>
+
+<section id="booking"><div class="wrap book">
+<aside class="info"><h3>預約健康檢測</h3><p>送出後，木木好藥局將於營業時間透過 LINE 或電話與您確認。</p><ul><li>預估 10–30 分鐘</li><li>建議穿著輕便服裝</li><li>部分檢測前請避免劇烈運動</li><li>請依現場人員指示完成檢測</li></ul><div class="notice">若有明顯不適或異常數值，請儘速就醫。</div></aside>
+
+<form id="form">
+<div class="grid2">
+<div class="field"><label>姓名 *</label><input name="name" required placeholder="請輸入姓名"></div>
+<div class="field"><label>手機號碼 *</label><input name="phone" required inputmode="tel" placeholder="09xxxxxxxx"></div>
+</div>
+<div class="field"><label>檢測項目 *</label><div class="checks">
+<label class="check"><input type="checkbox" name="service" value="BMI／身體指標">BMI／身體指標</label>
+<label class="check"><input type="checkbox" name="service" value="血壓檢測">血壓檢測</label>
+<label class="check"><input type="checkbox" name="service" value="動脈硬化檢測">動脈硬化檢測</label>
+<label class="check"><input type="checkbox" name="service" value="骨密度檢測">骨密度檢測</label>
+<label class="check"><input type="checkbox" name="service" value="自律神經分析">自律神經分析</label>
+<label class="check"><input type="checkbox" name="service" value="血氧檢測">血氧檢測</label>
+<label class="check"><input type="checkbox" name="service" value="肌膚分析">肌膚分析</label>
+<label class="check"><input type="checkbox" name="service" value="頭皮分析">頭皮分析</label>
+</div></div>
+<div class="grid2">
+<div class="field"><label>希望日期 *</label><input id="date" name="date" type="date" required></div>
+<div class="field"><label>希望時段 *</label><select name="time" required><option value="">請選擇</option><option>09:00–11:00</option><option>11:00–13:00</option><option>14:00–16:00</option><option>16:00–18:00</option><option>18:00–20:00</option></select></div>
+</div>
+<div class="grid2">
+<div class="field"><label>是否第一次到店</label><select name="first"><option>是</option><option>否</option></select></div>
+<div class="field"><label>偏好聯絡方式</label><select name="contact"><option>LINE</option><option>電話</option></select></div>
+</div>
+<div class="field"><label>備註</label><textarea name="note" placeholder="例如：希望同時做多項檢測、行動不便或其他需求"></textarea></div>
+<label class="check"><input id="agree" type="checkbox" required>我同意木木好藥局為預約聯繫與服務安排使用上述資料。</label>
+<br><button class="btn submit" type="submit">送出預約</button>
+</form>
+</div></section>
+
+<section><div class="wrap"><div class="head"><h2>預約流程</h2><p>四個步驟完成預約，實際時段將由門市再次確認。</p></div>
+<div class="steps">
+<div class="step"><b>STEP 1</b><h3>選擇項目</h3><p>勾選想了解的健康檢測。</p></div>
+<div class="step"><b>STEP 2</b><h3>填寫資料</h3><p>留下姓名、電話與希望時段。</p></div>
+<div class="step"><b>STEP 3</b><h3>專人確認</h3><p>門市將透過 LINE 或電話確認。</p></div>
+<div class="step"><b>STEP 4</b><h3>到店檢測</h3><p>依約到店並完成檢測。</p></div>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><strong>木木好藥局</strong><br>台北市大安區樂業街75號1樓｜目前籌備中，正式服務時間以公告為準</div></footer>
+
+<div id="modal" class="modal"><div class="modal-card"><div style="font-size:48px">✅</div><h2>預約草稿已建立</h2><p id="summary"></p><p style="color:#6d7266">此示範頁尚未串接後端，因此資料不會真正送出。</p><button id="close" class="btn">完成</button></div></div>
+
+<script>
+const date=document.getElementById('date');
+const now=new Date(); date.min=new Date(now-now.getTimezoneOffset()*60000).toISOString().split('T')[0];
+const form=document.getElementById('form'), modal=document.getElementById('modal');
+form.addEventListener('submit',e=>{
+ e.preventDefault();
+ const selected=[...document.querySelectorAll('input[name="service"]:checked')];
+ if(!form.checkValidity()){form.reportValidity();return}
+ if(!selected.length){alert('請至少選擇一項健康檢測。');return}
+ document.getElementById('summary').textContent=`${form.name.value}，希望預約 ${form.date.value} ${form.time.value}，項目：${selected.map(x=>x.value).join('、')}。`;
+ modal.classList.add('show');
+});
+document.getElementById('close').onclick=()=>{modal.classList.remove('show');form.reset()};
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show')}
+</script>
+</body>
+</html>
